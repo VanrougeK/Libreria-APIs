@@ -1,47 +1,55 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+const callback = async (response) => {
+  // Este es el token seguro que nos da Google
+  const token = response.credential;
+  
+  // Aquí lo enviamos a tu backend para validarlo
+  const res = await fetch('http://localhost:3000/api/auth/google', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token })
+  });
+  
+  const data = await res.json();
+  console.log("Respuesta del backend:", data);
+}
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <div class="login-wrapper">
+    <div class="login-card">
+      <h2>Librería PDFs</h2>
+      <p>Inicia sesión para continuar</p>
+      <GoogleLogin :callback="callback" />
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #181818;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.login-card {
+  background-color: #242424;
+  padding: 3rem;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+h2 {
+  margin-bottom: 0.5rem;
+  color: #42b883; /* Verde estilo Vue */
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+p {
+  margin-bottom: 2rem;
+  color: #a0a0a0;
 }
 </style>
