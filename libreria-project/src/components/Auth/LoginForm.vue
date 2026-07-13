@@ -1,7 +1,25 @@
-<script setup></script>
+<script setup>
+const callback = async (response) => {
+  const token = response.credential;
+  
+  try {
+    const res = await fetch('http://localhost:3000/api/auth/google', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token })
+    });
+    
+    const data = await res.json();
+    console.log("Respuesta del backend:", data);
+    
+  } catch (error) {
+    console.error("Error al conectar con el backend:", error);
+  }
+}
+</script>
 
 <template>
-  <form class="login-form">
+  <form class="login-form" @submit.prevent>
     <h2>Iniciar sesión</h2>
     <div class="form-group">
       <label for="email">Correo</label>
@@ -12,5 +30,10 @@
       <input id="password" type="password" required />
     </div>
     <button type="submit">Entrar</button>
+
+    <div class="google-auth-group">
+      <p>O ingresa con:</p>
+      <GoogleLogin :callback="callback" />
+    </div>
   </form>
 </template>
