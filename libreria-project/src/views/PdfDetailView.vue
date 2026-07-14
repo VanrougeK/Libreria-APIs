@@ -1,5 +1,5 @@
 <script setup>
-import PdfViewer from '@/components/Pdf/PdfViewer.vue'
+import PdfViewer from '@/components/pdfs/PdfViewer.vue'
 </script>
 
 <template>

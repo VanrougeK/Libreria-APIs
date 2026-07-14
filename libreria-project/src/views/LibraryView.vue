@@ -1,5 +1,5 @@
 <script setup>
-import PdfList from '@/components/Pdf/PdfList.vue'
+import PdfList from '@/components/pdfs/PdfList.vue'
 </script>
 
 <template>

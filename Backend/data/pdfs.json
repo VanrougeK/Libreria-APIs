@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "La Canción de Aquiles",
+    "author": "Madeline Miller",
+    "date": "20-09-2011",
+    "file": "/pdfs/01.pdf"
+  },
+
+  {
+    "id": 2,
+    "title": "Nigthmare Rarity 1",
+    "author": "Nuhfer Mebberson",
+    "date": "28-03-2013",
+    "file": "/pdfs/Nightmare Rarity 1.pdf"
+  },
+
+   {
+    "id": 3,
+    "title": "Nightmare Rarity 2",
+    "author": "Nuhfer Mebberson",
+    "date": "28-04-2013",
+    "file": "/pdfs/Nightmare Rarity 2.pdf"
+  },
+
+   {
+    "id": 4,
+    "title": "Nightmare Rarity 3",
+    "author": "Nuhfer Mebberson",
+    "date": "03-05-2013",
+    "file": "/pdfs/Nightmare Rarity 3.pdf"
+  },
+
+  {
+    "id": 5,
+    "title": "Halo Primordium",
+    "author": "Greg Bear",
+    "date": "03-06-2012",
+    "file": "/pdfs/2.Halo Primordium.pdf"
+  },
+
+    {
+    "id": 6,
+    "title": "Halo Silentum",
+    "author": "Greg Bear",
+    "date": "19-03-2013",
+    "file": "/pdfs/3.Halo Silentum.pdf"
+  },
+
+      {
+    "id": 7,
+    "title": "Halo Rebirth",
+    "author": "Greg Bear",
+    "date": "19-03-2013",
+    "file": "/pdfs/4.Halo Rebirth.pdf"
+  }
+
+]
