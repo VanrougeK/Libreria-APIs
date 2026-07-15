@@ -1,6 +1,11 @@
 const admin = require('firebase-admin');
 const { getAuth } = require('firebase-admin/auth');
 
+console.log('DEBUG typeof admin:', typeof admin);
+console.log('DEBUG admin keys:', admin ? Object.keys(admin) : 'admin es null/undefined');
+console.log('DEBUG admin.apps:', admin ? admin.apps : 'N/A');
+console.log('DEBUG node version:', process.version);
+
 if (admin.apps.length === 0) {
   admin.initializeApp({
     credential: admin.credential.cert({
