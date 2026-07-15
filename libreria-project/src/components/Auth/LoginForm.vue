@@ -1,9 +1,18 @@
 <script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
 const callback = async (response) => {
   const token = response.credential;
   
   try {
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/google`, {
+    const API_URL = window.location.hostname === 'localhost' 
+      ? 'http://localhost:3000' 
+      : 'https://libreria-apis.onrender.com';
+
+    const res = await fetch(API_URL + '/api/auth/google', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token })
@@ -11,6 +20,12 @@ const callback = async (response) => {
     
     const data = await res.json();
     console.log("Respuesta del backend:", data);
+
+    if (res.ok) {
+      localStorage.setItem('userToken', token);
+      console.log("Token guardado con éxito.");
+      router.push('/library');
+    }
     
   } catch (error) {
     console.error("Error al conectar con el backend:", error);
