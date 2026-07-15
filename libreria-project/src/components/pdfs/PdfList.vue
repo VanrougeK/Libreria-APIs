@@ -12,18 +12,24 @@ onMounted(async () => {
 
     const token = localStorage.getItem('userToken');
 
+    if (!token) {
+      return;
+    }
+
     const response = await fetch(API_URL + '/pdfs', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer ${token}`,
+        'x-token': token,
+        'token': token
       }
     });
     
     if (response.ok) {
       pdfs.value = await response.json();
     } else {
-      console.warn('El servidor respondió con un error (ej. 401). Asegúrate de haber iniciado sesión.');
+      console.warn('Error de respuesta:', response.status);
     }
   } catch (error) {
     console.error('Error cargando PDFs:', error);
