@@ -1,4 +1,5 @@
 const admin = require('firebase-admin');
+const { getAuth } = require('firebase-admin/auth');
 
 if (admin.apps.length === 0) {
   admin.initializeApp({
@@ -20,7 +21,7 @@ const authMiddleware = async (req, res, next) => {
   const token = authHeader.split(' ')[1];
 
   try {
-    const decodedToken = await admin.auth().verifyIdToken(token);
+    const decodedToken = await getAuth().verifyIdToken(token);
     req.user = decodedToken;
     next();
   } catch (error) {
