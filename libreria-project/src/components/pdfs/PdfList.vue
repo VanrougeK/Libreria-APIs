@@ -6,7 +6,7 @@ const pdfs = ref([])
 
 onMounted(async () => {
   try {
-    const response = await fetch('http://localhost:3000/pdfs')
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/pdfs`)
     pdfs.value = await response.json()
   } catch (error) {
     console.error('Error cargando PDFs:', error)

@@ -3,12 +3,14 @@ import { useRoute } from 'vue-router'
 import { computed, ref, onMounted } from 'vue'
 
 const route = useRoute()
-
 const pdfs = ref([])
 
 onMounted(async () => {
-  const response = await fetch('http://localhost:3000/pdfs')
+  try {
+  const response = await fetch('${import.meta.env.VITE_API_URL}/pdfs')
   pdfs.value = await response.json()
+} catch(error) {
+  console.error("Error en el visor, cargando PDFs: ", error)}
 })
 
 const pdf = computed(() =>
