@@ -27,13 +27,13 @@ app.post('/api/auth/google', async (req, res) => {
         const payload = ticket.getPayload();
         console.log("Usuario autenticado:", payload.email);
 
-        res.status(200).json({ 
-            message: 'Autenticación exitosa', 
-            user: { 
-                name: payload.name, 
+        res.status(200).json({
+            message: 'Autenticación exitosa',
+            user: {
+                name: payload.name,
                 email: payload.email,
                 picture: payload.picture
-            } 
+            }
         });
 
     } catch (error) {
@@ -47,7 +47,8 @@ app.get('/', (req, res) => {
     res.send('API funcionando correctamente');
 });
 
+const PORT = process.env.PORT || 3000;
 
-app.listen(3000, () => {
-    console.log('API corriendo en http://localhost:3000');
+app.listen(PORT, () => {
+    console.log(`API corriendo en puerto ${PORT}`);
 });
