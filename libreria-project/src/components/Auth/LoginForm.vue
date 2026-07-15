@@ -33,9 +33,7 @@ const callback = async (response) => {
 
     <div class="google-auth-group">
       <p>O ingresa con:</p>
-      <GoogleLogin 
-      :callback="callback"
-      popup-type="TOKEN" />
+      <GoogleLogin :callback="callback" />
     </div>
   </form>
 </template>

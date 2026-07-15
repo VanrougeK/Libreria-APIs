@@ -6,8 +6,18 @@ const pdfs = ref([])
 
 onMounted(async () => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/pdfs`)
-    pdfs.value = await response.json()
+    const API_URL = window.location.hostname === 'localhost' 
+      ? 'http://localhost:3000' 
+      : 'https://libreria-apis.onrender.com';
+
+    // Concatenamos de forma directa y segura sin usar comillas invertidas conflictivas
+    const response = await fetch(API_URL + '/pdfs');
+    
+    if (response.ok) {
+      pdfs.value = await response.json()
+    } else {
+      console.warn('El servidor respondió con un error (ej. 401). Asegúrate de haber iniciado sesión.')
+    }
   } catch (error) {
     console.error('Error cargando PDFs:', error)
   }
