@@ -10,16 +10,23 @@ onMounted(async () => {
       ? 'http://localhost:3000' 
       : 'https://libreria-apis.onrender.com';
 
-    // Concatenamos de forma directa y segura sin usar comillas invertidas conflictivas
-    const response = await fetch(API_URL + '/pdfs');
+    const token = localStorage.getItem('userToken');
+
+    const response = await fetch(API_URL + '/pdfs', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
     
     if (response.ok) {
-      pdfs.value = await response.json()
+      pdfs.value = await response.json();
     } else {
-      console.warn('El servidor respondió con un error (ej. 401). Asegúrate de haber iniciado sesión.')
+      console.warn('El servidor respondió con un error (ej. 401). Asegúrate de haber iniciado sesión.');
     }
   } catch (error) {
-    console.error('Error cargando PDFs:', error)
+    console.error('Error cargando PDFs:', error);
   }
 })
 </script>

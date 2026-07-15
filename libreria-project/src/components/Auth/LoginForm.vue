@@ -22,7 +22,10 @@ const callback = async (response) => {
     console.log("Respuesta del backend:", data);
 
     if (res.ok) {
-      localStorage.setItem('userToken', token);
+      
+      const tokenToSave = data.token || token; 
+      localStorage.setItem('userToken', tokenToSave);
+      
       console.log("Token guardado con éxito.");
       router.push('/library');
     }
