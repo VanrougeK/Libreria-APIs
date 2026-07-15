@@ -1,20 +1,4 @@
-const admin = require('firebase-admin');
-const { getAuth } = require('firebase-admin/auth');
-
-console.log('DEBUG typeof admin:', typeof admin);
-console.log('DEBUG admin keys:', admin ? Object.keys(admin) : 'admin es null/undefined');
-console.log('DEBUG admin.apps:', admin ? admin.apps : 'N/A');
-console.log('DEBUG node version:', process.version);
-
-if (admin.apps.length === 0) {
-  admin.initializeApp({
-    credential: admin.credential.cert({
-      projectId: process.env.FIREBASE_PROJECT_ID,
-      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      privateKey: process.env.FIREBASE_PRIVATE_KEY ? process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n') : undefined,
-    }),
-  });
-}
+const { auth } = require("../firebase/admin");
 
 const authMiddleware = async (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -26,7 +10,7 @@ const authMiddleware = async (req, res, next) => {
   const token = authHeader.split(' ')[1];
 
   try {
-    const decodedToken = await getAuth().verifyIdToken(token);
+    const decodedToken = await auth.verifyIdToken(token);
     req.user = decodedToken;
     next();
   } catch (error) {
