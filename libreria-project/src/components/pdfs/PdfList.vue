@@ -4,7 +4,7 @@ import { ref, onMounted } from 'vue'
 
 const pdfs = ref([])
 
-onMounted(async () => {
+const cargarPdfs = async () => {
   try {
     const API_URL = window.location.hostname === 'localhost' 
       ? 'http://localhost:3000' 
@@ -34,6 +34,18 @@ onMounted(async () => {
   } catch (error) {
     console.error('Error cargando PDFs:', error);
   }
+}
+
+onMounted(() => {
+  // Primer intento inmediato
+  cargarPdfs();
+
+  // Segundo intento de respaldo tras 800ms por si el localStorage estaba escribiéndose
+  setTimeout(() => {
+    if (pdfs.value.length === 0) {
+      cargarPdfs();
+    }
+  }, 800);
 })
 </script>
 
