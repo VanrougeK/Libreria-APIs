@@ -1,6 +1,6 @@
 const admin = require('firebase-admin');
 
-export const authMiddleware = async (req, res, next) => {
+const authMiddleware = async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -20,3 +20,5 @@ export const authMiddleware = async (req, res, next) => {
     return res.status(401).json({ error: 'Token inválido o expirado.' });
   }
 };
+
+module.exports= authMiddleware;
