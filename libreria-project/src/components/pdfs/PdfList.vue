@@ -1,6 +1,6 @@
 <script setup>
 import PdfCard from './PdfCard.vue'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watchEffect } from 'vue'
 
 const pdfs = ref([])
 
@@ -12,9 +12,7 @@ const cargarPdfs = async () => {
 
     const token = localStorage.getItem('userToken');
 
-    if (!token) {
-      return;
-    }
+    if (!token) return;
 
     const response = await fetch(API_URL + '/pdfs', {
       method: 'GET',
@@ -29,7 +27,7 @@ const cargarPdfs = async () => {
     if (response.ok) {
       pdfs.value = await response.json();
     } else {
-      console.warn('Error de respuesta:', response.status);
+      console.warn('Error al obtener PDFs:', response.status);
     }
   } catch (error) {
     console.error('Error cargando PDFs:', error);
@@ -37,16 +35,10 @@ const cargarPdfs = async () => {
 }
 
 onMounted(() => {
-  // Primer intento inmediato
-  cargarPdfs();
-
-  // Segundo intento de respaldo tras 800ms por si el localStorage estaba escribiéndose
-  setTimeout(() => {
-    if (pdfs.value.length === 0) {
-      cargarPdfs();
-    }
-  }, 800);
-})
+  watchEffect(() => {
+    cargarPdfs();
+  });
+});
 </script>
 
 <template>
