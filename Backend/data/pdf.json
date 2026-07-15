@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "title": "La Canción de Aquiles",
+        "author": "Madeline Miller",
+        "date": "20-09-2011",
+        "url": "https://docs.google.com/uc?export=download&id=1haTYa3RChGaen5z7woejod7z26bb-ONa"
+    },
+    {
+        "id": 2,
+        "title": "Nigthmare Rarity 1",
+        "author": "Nuhfer Mebberson",
+        "date": "28-03-2013",
+        "url": "https://docs.google.com/uc?export=download&id=1HniKLLODH6XIniEmlL2lRo0XrXLEIVW8"
+    },
+    {
+        "id": 3,
+        "title": "Nightmare Rarity 2",
+        "author": "Nuhfer Mebberson",
+        "date": "28-04-2013",
+        "url": "https://docs.google.com/uc?export=download&id=1_lpuoMJQoMN2kz0bHTu5iHHQB6eW_8Q7"
+    },
+    {
+        "id": 4,
+        "title": "Nightmare Rarity 3",
+        "author": "Nuhfer Mebberson",
+        "date": "03-05-2013",
+        "url": "https://docs.google.com/uc?export=download&id=1Bkrqx34icy9zxoWxj4WdAHny0-MDh96A"
+    },
+    {
+        "id": 5,
+        "title": "Halo Primordium",
+        "author": "Greg Bear",
+        "date": "03-06-2012",
+        "url": "https://docs.google.com/uc?export=download&id="
+    },
+    {
+        "id": 6,
+        "title": "Halo Silentum",
+        "author": "Greg Bear",
+        "date": "19-03-2013",
+        "url": "https://docs.google.com/uc?export=download&id=1GIyirFp7DDUTR0slIfmSsEm9qAM7KPa7"
+    },
+    {
+        "id": 7,
+        "title": "Halo Rebirth",
+        "author": "Greg Bear",
+        "date": "19-03-2013",
+        "url": "https://docs.google.com/uc?export=download&id=1NLKfNk-GZFgzzoR2LjN3K1h0Omtg3mQ8"
+    }
+]

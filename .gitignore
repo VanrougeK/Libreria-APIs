@@ -1,3 +1,42 @@
-Backend/firebase/serviceAccountKey.json
-Backend/firebase/serviceAccountKey.json
-Backend/firebase/serviceAccountKey.json
+# node_modules
+node_modules/
+**/node_modules/
+
+# archivos y credenciales
+.env
+*.local
+**/firebase/serviceAccountKey.json
+
+# Logs generales
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Archivos del Sistema Operativo
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.tsbuildinfo
+.eslintcache
+
+# FRONTEND
+Frontend/dist/
+Frontend/dist-ssr/
+Frontend/coverage/
+Frontend/cypress/videos/
+Frontend/cypress/screenshots/
+Frontend/__screenshots__/
+Frontend/*.timestamp-*-*.mjs

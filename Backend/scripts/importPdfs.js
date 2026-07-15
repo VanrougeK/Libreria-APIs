@@ -1,5 +1,8 @@
 const { db } = require("../firebase/admin");
-const pdfs = require("../data/pdfs.json");
+const path = require("path");
+
+const pdfsDataPath = path.join(__dirname, "../data/pdfs.json");
+const pdfs = require(pdfsDataPath);
 
 async function importData() {
   try {
@@ -9,7 +12,7 @@ async function importData() {
     }
 
     console.log("🎉 Importación completada.");
-    process.exit();
+    process.exit(0);
 
   } catch (error) {
     console.error(error);

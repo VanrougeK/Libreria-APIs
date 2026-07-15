@@ -2,6 +2,8 @@ const { db } = require("../firebase/admin");
 
 const getPdfs = async (req, res) => {
   try {
+    console.log(`Petición autorizada para el usuario con email: ${req.user.email}`);
+
     const snapshot = await db.collection("pdfs").get();
 
     const pdfs = snapshot.docs.map(doc => ({
