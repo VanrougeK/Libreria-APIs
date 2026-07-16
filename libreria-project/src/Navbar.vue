@@ -14,7 +14,7 @@ const { user, logout } = useAuth()
       <router-link to="/library">Librería</router-link>
       <router-link v-if="!user" to="/login">Ingresar</router-link>
       <template v-else>
-        <span class="navbar-user">Hola, {{ user.name }}</span>
+        <span class="navbar-user">Hola, {{ user.displayLabel }}</span>
         <button type="button" @click="logout">Cerrar sesión</button>
       </template>
     </nav>
