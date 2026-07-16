@@ -12,7 +12,7 @@ app.use(router)
 
 // Aquí pones tu ID real de Google
 app.use(vue3GoogleLogin, {
-  clientId: '662300337306-tkhfkqatcogg9kloo177l1vemnbui3lr.apps.googleusercontent.com'
+  clientId: '718294780350-apbajtl21lhljek5n05d2fk3b6q0n3nv.apps.googleusercontent.com'
 })
 
 app.mount('#app')
