@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const CLIENT_ID = '662300337306-tkhfkqatcogg9kloo177l1vemnbui3lr.apps.googleusercontent.com';
+const CLIENT_ID = '718294780350-apbajtl21lhljek5n05d2fk3b6q0n3nv.apps.googleusercontent.com';
 const client = new OAuth2Client(CLIENT_ID);
 
 app.use('/pdfs', pdfRoutes); // <-- agregar
