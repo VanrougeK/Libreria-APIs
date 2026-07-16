@@ -1,3 +1,10 @@
+import { ref } from 'vue'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
+import { auth } from '../firebase/firebase.js'
+
+const user = ref(null)
+const isReady = ref(false)
+
 onAuthStateChanged(auth, (firebaseUser) => {
   console.log('DEBUG: onAuthStateChanged disparado. firebaseUser =', firebaseUser)
 
@@ -20,3 +27,13 @@ onAuthStateChanged(auth, (firebaseUser) => {
   }
   isReady.value = true
 })
+
+export function useAuth() {
+  const logout = async () => {
+    await signOut(auth)
+    localStorage.removeItem('userToken')
+    window.location.href = '/login'
+  }
+
+  return { user, isReady, logout }
+}
