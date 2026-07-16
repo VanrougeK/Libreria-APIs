@@ -7,10 +7,19 @@ const pdfs = ref([])
 
 onMounted(async () => {
   try {
-  const response = await fetch('${import.meta.env.VITE_API_URL}/pdfs')
-  pdfs.value = await response.json()
-} catch(error) {
-  console.error("Error en el visor, cargando PDFs: ", error)}
+    const token = localStorage.getItem('userToken')
+
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/pdfs`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+
+    pdfs.value = await response.json()
+  } catch (error) {
+    console.error("Error en el visor, cargando PDFs: ", error)
+  }
 })
 
 const pdf = computed(() =>
