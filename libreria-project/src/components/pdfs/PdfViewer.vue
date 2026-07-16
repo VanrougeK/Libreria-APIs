@@ -25,6 +25,15 @@ onMounted(async () => {
 const pdf = computed(() =>
   pdfs.value.find(p => Number(p.id) === Number(route.params.id))
 )
+
+const embedUrl = computed(() => {
+  if (!pdf.value?.url) return null
+  const match = pdf.value.url.match(/id=([a-zA-Z0-9_-]+)/)
+  if (match && match[1]) {
+    return `https://drive.google.com/file/d/${match[1]}/preview`
+  }
+  return null
+})
 </script>
 
 <template>
@@ -35,12 +44,13 @@ const pdf = computed(() =>
 
     <div class="pdf-viewer-canvas">
       <embed
-        v-if="pdf"
-        :src="pdf.file"
+        v-if="embedUrl"
+        :src="embedUrl"
         type="application/pdf"
         width="100%"
         height="100%"
       />
+      <p v-else>No se pudo cargar la vista previa de este documento.</p>
     </div>
   </div>
 </template>
