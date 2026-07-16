@@ -1,37 +1,23 @@
 <script setup>
-import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { GoogleAuthProvider, signInWithCredential } from 'firebase/auth'
+import { auth } from '../../firebase/firebase.js'
 
 const router = useRouter()
 
 const callback = async (response) => {
-  const token = response.credential;
-  
   try {
-    const API_URL = window.location.hostname === 'localhost' 
-      ? 'http://localhost:3000' 
-      : 'https://libreria-apis.onrender.com';
+    const credential = GoogleAuthProvider.credential(response.credential)
+    const userCredential = await signInWithCredential(auth, credential)
 
-    const res = await fetch(API_URL + '/api/auth/google', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ token })
-    });
-    
-    const data = await res.json();
-    console.log("Respuesta del backend:", data);
+    const idToken = await userCredential.user.getIdToken()
 
-    if (res.ok) {
-      
-      const tokenToSave = data.token || token; 
-      localStorage.setItem('userToken', tokenToSave);
-      
-      console.log("Token guardado con éxito.");
-      router.push('/library');
-    }
-    
+    localStorage.setItem('userToken', idToken)
+    console.log('Token de Firebase guardado con éxito.')
+    router.push('/library')
+
   } catch (error) {
-    console.error("Error al conectar con el backend:", error);
+    console.error('Error al iniciar sesión con Firebase:', error)
   }
 }
 </script>
