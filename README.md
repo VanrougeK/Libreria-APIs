@@ -173,4 +173,4 @@ El propósito de este proyecto es demostrar la integración de diferentes APIs y
 - Yorhel Hiram Esparza Heredia
 - Danna Riccombeni Gaytán
   
-Este proyecto fue desarrollado como practica académicamente para la integración de APIs y tecnologías web modernas.
+Este proyecto fue desarrollado como practica académica para la integración de APIs y tecnologías web modernas.
