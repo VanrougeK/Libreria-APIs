@@ -6,7 +6,6 @@ const user = ref(null)
 const isReady = ref(false)
 
 onAuthStateChanged(auth, (firebaseUser) => {
-  console.log('DEBUG: onAuthStateChanged disparado. firebaseUser =', firebaseUser)
 
   if (firebaseUser) {
     const isGoogle = firebaseUser.providerData[0]?.providerId === 'google.com'
@@ -20,7 +19,6 @@ onAuthStateChanged(auth, (firebaseUser) => {
         ? (firebaseUser.displayName || firebaseUser.email)
         : firebaseUser.email
     }
-    console.log('DEBUG: user.value seteado a', user.value)
   } else {
     user.value = null
     console.log('DEBUG: user.value seteado a null')

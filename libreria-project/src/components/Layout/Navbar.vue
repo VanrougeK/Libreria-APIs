@@ -25,7 +25,7 @@ const { user, logout } = useAuth()
             class="profile-pic" 
             referrerpolicy="no-referrer" 
           />
-          <span class="navbar-user">Hola, {{ user.displayName || 'Usuario' }}</span>
+          <span class="navbar-user">Hola, {{ user.displayLabel || 'Usuario' }}</span>
           
           <button type="button" class="logout-btn" @click="logout">Cerrar sesión</button>
         </div>

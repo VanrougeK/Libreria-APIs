@@ -13,7 +13,6 @@ const callback = async (response) => {
     const idToken = await userCredential.user.getIdToken()
 
     localStorage.setItem('userToken', idToken)
-    console.log('Token de Firebase guardado con éxito.')
     router.push('/library')
 
   } catch (error) {
